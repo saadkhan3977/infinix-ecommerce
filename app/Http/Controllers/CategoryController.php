@@ -8,20 +8,16 @@ use Session;
 
 class CategoryController extends Controller
 {
-    
-    public function index(){
+    public function index()
+    {
         $category = Category::all();
         return view('category.showCategory',compact('category'));
     }
 
-
-    public function show(){
+    public function show()
+    {
         return view('addCategory');
     }
-
-
-
-
 
     public function edit($id)
     {
@@ -29,20 +25,14 @@ class CategoryController extends Controller
         return view('category.categoryedit',compact('category'));
     }
 
-
-
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
         $category->category_name = $request->input('category_name');
-       // dd($category);
         $category->save();
         session::flash('success','Record Updated Successfully');
         return redirect('category');
     }
-
-
-
 
     public function create(Request $request)
     {
@@ -51,7 +41,6 @@ class CategoryController extends Controller
     
     public function store(Request $request)
     {
-
         request()->validate([
             'category_name' => 'required|min:3',
         ]);
@@ -61,16 +50,13 @@ class CategoryController extends Controller
             session::flash('success','Category has been successfully added');
             return redirect('category');
         }
-        // return back()->with('success','Category successfully added');
     }
-
 
     public function destroy($id)
     {
        $category = Category::find($id);
        $category->delete();
        session::flash('success','Record has been deleted Successfully');
-       return redirect('category');
-        
+       return redirect('category');   
     }
 }

@@ -65,7 +65,7 @@
                             <label>Logo </label>
                         <input type="file" name="logo" class="form-control" >
                         
-                        <img src="{{asset($val->logo)}}" width="100px" height="60px" >
+                        <img src="{{asset('/uploads/cms/'.$val->logo)}}" width="100px" height="60px" >
                         
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                             <label>Image </label>
                         <input type="file" name="slider_image" class="form-control">
                         
-                        <img src="{{asset($val->slider_image)}}"  width="100px" height="60px" >
+                        <img src="{{asset('/uploads/cms/'.$val->slider_image)}}"  width="100px" height="60px" >
                         
                         </div>
                     </div>
@@ -86,34 +86,13 @@
                         <div class="form-group">
                             <label>video </label>
                         <input type="file" name="slider_video" class="form-control">
-                        <video src="{{asset($val->slider_video)}}" width="100px" height="100px"></video>
+                        <video src="{{asset('/uploads/cms/'.$val->slider_video)}}" width="100px" height="100px"></video>
                         <!-- <img src=""  width="100px" height="60px" > -->
                         
                         </div>
                     </div>
                         @endif
-                    <!-- @if($val->right_image)
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Right image </label>
-                        <input type="file" name="right_image" class="form-control">
-                        
-                        <img src="{{asset($val->right_image)}}"  width="100px" height="60px">
-                        
-                        </div>
-                    </div>
-                        @endif
-                    @if($val->left_image)
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label>Left iamge </label>
-                        <input type="file" name="left_image" class="form-control">
-                        
-                        <img src="{{asset($val->left_image)}}"  width="100px" height="60px">
-                        
-                        </div>
-                    </div>
-                        @endif -->
+                    
                     @if($val->slider_content_1)
                     <div class="col-sm-4">
                         <div class="form-group">
@@ -151,7 +130,7 @@
                         <div class="form-group">
                             <label>Icon image 1 </label>
                         <input type="file" name="icon_image_1" class="form-control">                                                                       
-                        <img src="{{asset($val->icon_image_1)}}"  width="100px" height="60px" >                                                                      
+                        <img src="{{asset('/uploads/cms/'.$val->icon_image_1)}}"  width="100px" height="60px" >                                                                      
                         </div>
                     </div>
                         @endif
@@ -161,7 +140,7 @@
                             <label>Icon image 2 </label>
                         <input type="file" name="icon_image_2" class="form-control">
                         @if($val->icon_image_1)
-                        <img src="{{asset($val->icon_image_2)}}"  width="100px" height="60px" >
+                        <img src="{{asset('/uploads/cms/'.$val->icon_image_2)}}"  width="100px" height="60px" >
                         @endif
                         </div>
                     </div>
@@ -172,7 +151,7 @@
                             <label>Icon image 3</label>
                         <input type="file" name="icon_image_3" class="form-control">
                         
-                        <img src="{{asset($val->icon_image_3)}}"  width="100px" height="60px" >
+                        <img src="{{asset('/uploads/cms/'.$val->icon_image_3)}}"  width="100px" height="60px" >
                         
                         </div>
                     </div>

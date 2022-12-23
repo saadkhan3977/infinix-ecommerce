@@ -1,4 +1,4 @@
-@extends('layouts/app')
+@extends('layouts.app')
 @section('title', 'Product')
 @section('page_heading', 'Product Edit')
 @section('content')
@@ -195,9 +195,16 @@
                            <a href="{{ asset('uploads/product/'.$product->product_image) }}" data-toggle="lightbox" id="a_output" data-title="Product Image" data-gallery="gallery">
                            <img src="{{ asset('uploads/product/'.$product->product_image) }}" id="output" class="img-fluid mb-2" width="260" height="151" />
                            </a>
+                           <div class="form-group">
+                              <label>Template</label>
+                              <select name="page_id" class="form-control"  data-placeholder="Select a Category" style="width: 100%;">
+                                 <option value="">--Select template--</option>
+                                 @foreach($pages as $page)
+                                 <option value="{{$page->id}}" @if($page->id == $product->page_id) selected @endif>{{$page->page_name}}</option>
+                                 @endforeach
+                              </select>
+                           </div>
                            <!-- </div> -->
-                           
-                           
                         </div>
                      </div>
                   </div>
@@ -270,7 +277,7 @@
                success: function (data) {
                   $('select[name="subcat_id"]').empty();
                   $.each(data.success, function (key, value) {
-                     $('select[name="subcat_id"]').append('<option value=" ' + key + '">' + value.category_name + '</option>');
+                     $('select[name="subcat_id"]').append('<option value="'+value.id+'">' + value.category_name + '</option>');
                   })
                }
 

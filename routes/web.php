@@ -11,11 +11,14 @@ use App\Http\Controllers\PackagesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\TemplateSectionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\GeneralSettingController;
+use App\Http\Controllers\OrderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +52,10 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile.index');
     Route::post('/profile/update', [DashboardController::class, 'update'])->name('profile.update');
     Route::resource('product', ProductController::class);
+   
+    Route::resource('template', TemplateController::class);
+    Route::resource('template_section', TemplateSectionController::class);
+    
     Route::get('subcatories/{category}', [SubCategoryController::class,'subcatories']);
     Route::get('product/{id}/images', [ProductController::class, 'images']);
   	Route::post('product/{id}/images', [ProductController::class, 'postImages']);
@@ -57,6 +64,7 @@ Route::group(['middleware' => ['auth','verified']], function(){
     Route::resource('pages',PageController::class);
     Route::resource('sections',SectionController::class);
     Route::resource('general_setting',GeneralSettingController::class);
+    Route::resource('orders',OrderController::class);
 });
   
   

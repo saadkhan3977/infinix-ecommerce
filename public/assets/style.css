@@ -145,6 +145,136 @@ header .search-cart {
 header .search-cart img {
     filter: brightness(0) invert(1);
 }
+/* ///////////////////////////// */
+.navbar .has-megamenu {
+    position: static !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,.55);
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.dropdown-toggle {
+    white-space: nowrap;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; /*// allow us to do the line break for collapsing content*/
+    align-items: center;
+    justify-content: space-between; /*// space out brand from logo*/
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom:0;
+    padding-left: 0;
+}
+    /*// Because flex properties aren't inherited, we need to redeclare these first*/
+    /*// few properties so that content nested within behave properly. */
+    /*// The `flex-wrap` property is inherited to simplify the expanded navbars*/
+.nav-link:focus, .nav-link:hover {
+    color: #000000 !important;
+}
+/* .sticky-head .logo-nav ul.navbar-nav li a {
+    color: #fff;
+} */
+.logo-nav ul.navbar-nav li a img {
+    filter: none;
+    transition: 0.5s;
+    width: 60px !important;
+    margin-top: 20px;
+    margin-bottom: 20px !important;
+}
+.navbar-nav .dropdown:hover .dropdown-menu a:hover img
+{
+    transform: scale(1.2);
+}
+.sticky-head .navbar-nav .dropdown:hover .dropdown-menu a:hover img
+{
+    transform: scale(1.2);
+}
+.navbar-nav .dropdown-menu .row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+}
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    min-width: 100% !important;
+    padding: 2rem !important;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: center !important;
+    list-style: none;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 0.25rem;
+    padding: 50px;
+    background: #000000a8 0% 0% no-repeat padding-box !important;
+    opacity: 1;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+.dropdown-menu.megamenu .col-megamenu h5{
+    color: #fff !important;
+}
+.dropdown-menu.megamenu .col-megamenu p {
+    font-size: 13px;
+    font-weight: 200;
+    color: #fff;
+}
+.col-megamenu li a {
+    color: #000;
+}
+.navbar-nav {
+    display: flex;
+    flex-direction: row !important;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    gap: 40px;
+}
+.nav-link {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  
+.dropdown-menu {
+      position: static;
+    }
+.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+
+/* //////////////////////////////////// */
+.navbar-nav .dropdown:hover .dropdown-menu {
+    /* margin-top: 20px; */
+    left: 0;
+    display: block;
+    position: absolute;
+}
+.navbar-nav .dropdown .dropdown-menu {
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+    border: none;
+    border-radius: 0;
+    padding: 0.7em;
+}
 /* /////////////-Header-//////////// */
   video {
     width: 100%;
@@ -704,16 +834,6 @@ form.subscribe input[type="submit"] {
 .footer .footer-copyright .social-media ul li {
     display: inline;
     margin-right: 15px;
-}
-.btn-primary {
-    background-color: #0d6efd00 !improtant; 
-     border-color: #0d6efd00 !improtant;
-}
-
-
-.btn-primary:hover{
-        background-color: #0d6efd00 !improtant; 
-     border-color: #0d6efd00 !improtant;
 }
 
 /* /////////////-Responsive-//////////// */

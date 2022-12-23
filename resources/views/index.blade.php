@@ -9,7 +9,7 @@ Home
     <!-- //////////BANNER/////////// -->  
         <div class="banner-main">
             <div class="banner-1">
-            <video src="{{asset($slider->slider_video)}}" muted autoplay loop></video>
+            <video src="{{asset('/uploads/cms/'.$slider->slider_video)}}" muted autoplay loop></video>
             <div class="container">
                 <div data-aos="fade-down" class="content">
                 <h2>{{ ($slider) ? $slider->slider_content_1 : 'WELCOME TO' }}</h2>
@@ -84,7 +84,7 @@ Home
                     </div>
                     <div class="col-5">
                         <div data-aos="fade-down" class="product-details about-products pro-infinix">
-                            <img class="infinix" width="260px" src="{{asset(( $middel[0] )  ? $middel[0]->slider_image : null)}}">
+                            <img class="infinix" width="260px" src="{{asset(( $middel[0] )  ? '/uploads/cms/'.$middel[0]->slider_image : null)}}">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-6">
@@ -96,7 +96,7 @@ Home
                                     </div>
                                     <div class="col-6">
                                         <div class="product-img">
-                                            <a href="#"><img width="330px" src="{{asset(( $middel[1] )  ? $middel[1]->slider_image : null)}}"></a>
+                                            <a href="#"><img width="330px" src="{{asset(( $middel[1] )  ? '/uploads/cms/'.$middel[1]->slider_image : null)}}"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,13 +144,13 @@ Home
                 <div class="column small-11 small-centered">
                     <div class="slider slider-single">
                         @forelse($video as $vid)
-                        <video wzdth="320" height="240" controls="false" autoplay="autoplay" muted="ture"><source src="{{$vid->slider_video}}" type="video/mp4"></video>
+                        <video wzdth="320" height="240" controls="false" autoplay="autoplay" muted="ture"><source src="{{asset('/uploads/cms/'.$vid->slider_video)}}" type="video/mp4"></video>
                         @empty
                         @endforelse
                     </div>
                     <div data-aos="fade-up" class="slider slider-nav">
                         @forelse($video as $vid)
-                        <img width="320" height="240" src="{{$vid->slider_image}}">
+                        <img width="320" height="240" src="{{asset('/uploads/cms/'.$vid->slider_image)}}">
                         @empty
                         @endforelse
                     </div>
@@ -222,14 +222,14 @@ Home
                     <div data-aos="fade-up" class="col-6">
                         <div class="lookbook-details lookone">
                             <div class="lookbook-img">
-                                <img src="{{ ( $middel[4] )  ? $middel[4]->slider_image : ''}}">
+                                <img src="{{ ( $middel[4] )  ? asset('/uploads/cms/'.$middel[4]->slider_image) : ''}}">
                             </div>
                         </div>
                     </div>
                     <div data-aos="fade-down" class="col-6">
                         <div class="lookbook-details looksec">
                             <div class="lookbook-img">
-                                <img src="{{ ( $middel[5] )  ? $middel[5]->slider_image : ''}}">
+                                <img src="{{ ( $middel[5] )  ? asset('/uploads/cms/'.$middel[5]->slider_image) : ''}}">
                             </div>
                             <div class="lookbook-content">
                                 <img width="40px" src="{{asset('/assets/imgs/qoutes.png')}}">
@@ -262,7 +262,7 @@ Home
                     </form>                  
                 </div>
                 <div data-aos="fade-left" class="col-6">
-                    <img class="sub-image" width="100%" src="{{ ($middel[6]) ? $middel[6]->slider_image : null }}">
+                    <img class="sub-image" width="100%" src="{{ ($middel[6]) ? asset('/uploads/cms/'.$middel[6]->slider_image) : null }}">
                 </div>
             </div>
         </div>

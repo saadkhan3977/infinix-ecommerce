@@ -14,17 +14,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-        
-
-        // $files = Storage::disk('views')->files('');
-        // echo "<pre>";
-        // print_r($files);die;
         $page = PageCategory::where('page_name','Home')->first();
         $data['slider'] = PageSections::where('section_name','slider')->first();
         $data['middel'] = PageSections::where('section_name','middel')->get();
         $data['video'] = PageSections::where('section_name','video')->get();
-        
         $data['products'] = Product::limit(8)->get();
         $data['productasc'] = Product::OrderBy('id','Asc')->first();
         $data['productdsc'] = Product::OrderBy('id','Desc')->first();
@@ -35,7 +28,6 @@ class HomeController extends Controller
     {
         $data['product'] = Product::find($id);
         $data['size'] = VeriantSize::where('product_id',$id)->first();
-        // return json_decode($size->name); 
         $data['color'] = VeriantColor::where('product_id',$id)->first();
         return view('product_detail',$data);
     }

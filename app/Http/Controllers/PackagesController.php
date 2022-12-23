@@ -10,12 +10,9 @@ class PackagesController extends Controller
 {
     public function index()
     {
-
         $Packages = Packages::all();
-
         return view('package.showPackages',compact('Packages'));
     }
-
    
     public function create()
     {
@@ -24,20 +21,17 @@ class PackagesController extends Controller
     
     public function store(Request $request)
     {
-        //dd($request);
-
         $this->validate($request,[
             'title'=> 'required',
             'price'=> 'required',
+        ]);       
+        $saveResult = Packages::create([
+            'title' => $request->title,
+            'price' => $request->price,
+            'description' => $request->description
         ]);
-            
-            $saveResult = Packages::create([
-                'title' => $request->title,
-                'price' => $request->price,
-                'description' => $request->description
-            ]);
-            session::flash('success','Record Uploaded Successfully');
-            return redirect('packages')->with('success','Record Uploaded Successfully');
+        session::flash('success','Record Uploaded Successfully');
+        return redirect('packages')->with('success','Record Uploaded Successfully');
     }
 
    
@@ -50,7 +44,6 @@ class PackagesController extends Controller
     public function edit($id)
     {
         $package = Packages::find($id);
-        //dd($package);
         return view('package.packageEdit')->with('package', $package);
     }
 
@@ -64,16 +57,16 @@ class PackagesController extends Controller
             'description' => $request->description
         ]);
         
-        if($updateProduct){
-            return back()
-                ->with('success','Record Updated Successfully');
-            }else{
-            return back()
-                ->with('error','Record is not Updated');         	
-            }
+        if($updateProduct)
+        {
+            return back()->with('success','Record Updated Successfully');
+        }
+        else
+        {
+            return back()->with('error','Record is not Updated');         	
+        }
     }
 
-   
     public function destroy($id)
     {
         $package = Packages::find($id);

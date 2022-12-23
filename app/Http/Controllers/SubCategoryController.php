@@ -8,19 +8,16 @@ use App\Models\Category;
 use Session;
 class SubCategoryController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $category = SubCategory::all();
         return view('subcategory.showCategory',compact('category'));
     }
 
-
-    public function show(){
+    public function show()
+    {
         return view('addCategory');
     }
-
-
-
-
 
     public function edit($id)
     {
@@ -28,8 +25,6 @@ class SubCategoryController extends Controller
         $data['categorys'] = Category::all();
         return view('subcategory.categoryedit',$data);
     }
-    
-    
     
     public function subcatories($id)
     {
@@ -41,14 +36,10 @@ class SubCategoryController extends Controller
         $category = SubCategory::find($id);
         $category->category_name = $request->input('category_name');
         $category->category_id = $request->input('category_id');
-       // dd($category);
         $category->save();
         session::flash('success','Record Updated Successfully');
         return redirect('subcategory');
     }
-
-
-
 
     public function create(Request $request)
     {
@@ -58,27 +49,24 @@ class SubCategoryController extends Controller
     
     public function store(Request $request)
     {
-
         request()->validate([
             'category_id' => 'required',
             'category_name' => 'required|min:3',
         ]);
 
         $category = SubCategory::create( $request->all());
-        if($category){
+        if($category)
+        {
             session::flash('success','Category has been successfully added');
             return redirect('subcategory');
         }
-        // return back()->with('success','Category successfully added');
     }
-
 
     public function destroy($id)
     {
        $category = SubCategory::find($id);
        $category->delete();
        session::flash('success','Record has been deleted Successfully');
-       return redirect('subcategory');
-        
+       return redirect('subcategory');   
     }
 }

@@ -15,7 +15,6 @@ use App\Models\Orderitem;
 
 class CheckoutController extends Controller
 {
-
     public $gateway;
     public $completePaymentUrl;
 
@@ -70,8 +69,7 @@ class CheckoutController extends Controller
         return $data ;
     }
     public function cart()
-    {
-        
+    {        
         $userid = session()->get('userid');
         $data['cart'] =  Cart::where(['user_id'=>$userid])->get();
         $data['total'] =  Cart::where(['user_id'=>$userid])->sum('total');
@@ -80,12 +78,12 @@ class CheckoutController extends Controller
     
     public function updatecart(Request $request)
     {
-        // return $request->type ;
-        if ($request->id and $request->quant) {
-            $userid = session()->get('userid');
-            
+        if ($request->id and $request->quant) 
+        {
+            $userid = session()->get('userid');        
             $cart = Cart::where(['id' => $request->id, 'product_id' => $request->product_id, 'user_id' => $userid])->first();
-            if ($cart) {
+            if ($cart) 
+            {
                 if($request->type == 'plus')
                 {
                     $cart->quantity = $request->quant;
@@ -96,10 +94,11 @@ class CheckoutController extends Controller
                     $cart->quantity = $quant;
                     $cart->total = $cart->product_price * $cart->quantity;
                     $cart->save();
-                }
-                
+                }    
                 return response()->json(['success'=> 'Cart updated successfully']);
-            } else {
+            } 
+            else 
+            {
                 return response()->json(['error'=> 'Something Went Wrong']);
             }
         }
@@ -176,8 +175,7 @@ class CheckoutController extends Controller
                     'city' => $request->city,
                     'zipcode' => $request->zipcode,
                     'status' => 'Process',
-                ]);
-                
+                ]);    
                 
                 foreach($carts as $cart)
                 {
@@ -189,7 +187,6 @@ class CheckoutController extends Controller
                     ]);   
                     Cart::find($cart->id)->delete();
                 }
- 
                 return redirect("/")->with("success", "Payment is successful. Your payment id is: ". $arr_payment_data['id']);
             }
             elseif($response->isRedirect())
@@ -236,7 +233,6 @@ class CheckoutController extends Controller
             return redirect()->back()->with("error", $response->getMessage());
         }
     }
- 
     public function store_payment($arr_data = [])
     {
         $isPaymentExist = Payment::where('payment_id', $arr_data['payment_id'])->first();  
@@ -254,3 +250,4 @@ class CheckoutController extends Controller
         }
     }
 }
+    

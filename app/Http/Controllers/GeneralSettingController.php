@@ -16,7 +16,6 @@ class GeneralSettingController extends Controller
     
     public function store(Request $request)
     {
-        //dd($request);
         $data = GeneralSetting::first();
         $logo = ($data) ? $data->logo : null;
         $this->validate($request,[
@@ -33,14 +32,14 @@ class GeneralSettingController extends Controller
 
         if($request->hasFile('logo')) 
         {
-            if($data){
+            if($data)
+            {
                 if(File::exists(public_path('/uploads/logo/'.$data->logo)))
             	File::delete(public_path('/uploads/logo/'.$data->logo));
             }
 
             $file = $request->file('logo');
             $logo = 'file-'.time().'.'.$file->extension();
-            
             $path = public_path().'/uploads/logo/';
             $file->move($path, $logo);
         }
@@ -75,7 +74,5 @@ class GeneralSettingController extends Controller
             ]);
         }
         return redirect()->back()->with('success','Record Uploaded Successfully');
-    }
-
-   
+    }   
 }

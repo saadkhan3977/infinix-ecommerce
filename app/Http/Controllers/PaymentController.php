@@ -28,7 +28,6 @@ class PaymentController extends Controller
         if($request->input('stripeToken'))
         {
             $token = $request->input('stripeToken');
- 
             $response = $this->gateway->authorize([
                 'amount' => $request->input('amount'),
                 'currency' => env('STRIPE_CURRENCY'),
@@ -55,7 +54,6 @@ class PaymentController extends Controller
                     'currency' => env('STRIPE_CURRENCY'),
                     'payment_status' => $arr_payment_data['status'],
                 ]);
- 
                 return redirect("payment")->with("success", "Payment is successful. Your payment id is: ". $arr_payment_data['id']);
             }
             elseif($response->isRedirect())
@@ -94,7 +92,6 @@ class PaymentController extends Controller
                 'currency' => env('STRIPE_CURRENCY'),
                 'payment_status' => $arr_payment_data['status'],
             ]);
- 
             return redirect("payment")->with("success", "Payment is successful. Your payment id is: ". $arr_payment_data['id']);
         }
         else
@@ -106,7 +103,6 @@ class PaymentController extends Controller
     public function store_payment($arr_data = [])
     {
         $isPaymentExist = Payment::where('payment_id', $arr_data['payment_id'])->first();  
-  
         if(!$isPaymentExist)
         {
             $payment = new Payment;

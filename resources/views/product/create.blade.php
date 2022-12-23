@@ -124,6 +124,15 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                      </div>
                   </div>
+                  <div class="form-group">
+                     <label>Template</label>
+                     <select name="page_id" class="form-control"  data-placeholder="Select a Category" style="width: 100%;">
+                        <option value="">--Select template--</option>
+                        @foreach($pages as $page)
+                        <option value="{{$page->id}}">{{$page->page_name}}</option>
+                        @endforeach
+                     </select>
+                  </div>
                   <!-- <div class="col-sm-6"> -->
                   <a data-toggle="lightbox" id="a_output" data-title="Product Image" data-gallery="gallery">
                   <img id="output" class="img-fluid mb-2"/>
@@ -147,12 +156,12 @@
 </section>
 </div>
 <!-- /.content -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 <script>
    var count = 1;
-   // Size
-   function showsize(){
+   function showsize()
+   {
       if($('#size').is(':checked'))
       {
          $("#customsize").append('<div class="row" id="size-'+count+'" ><div class="col-3"><div class="form-group"><label>size name</label><input required="" type="text" class="form-control" name="size_name[]"></div></div><div class="col-3"><div class="form-group"><label>size Quantity</label><input required="" type="number" class="form-control" name="size_quantity[]" ></div></div><div class="col-3"><div class="form-group"><label>size Price</label><input required="" type="number" class="form-control" name="size_price[]" ></div></div><div class="col-3"><div class="form-group"><button class="btn btn-info" type="button" onclick="addsize('+count+')"><i class="fa fa-plus"></i></button></div></div></div>');
@@ -162,16 +171,18 @@
          $("#customsize").empty();
       }
    }
-   function addsize(val){
+   function addsize(val)
+   {
       count++;
-         $("#customsize").append('<div class="row" id="size-'+count+'" ><div class="col-3"><div class="form-group"><label>size name</label><input required="" type="text" class="form-control" name="size_name[]" ></div></div><div class="col-3"><div class="form-group"><label>size Quantity</label><input required="" type="number" class="form-control" name="size_quantity[]" ></div></div><div class="col-3"><div class="form-group"><label>size Price</label><input required="" type="number" class="form-control" name="size_price[]" ></div></div><div class="col-3"><div class="form-group"><button class="btn btn-danger" type="button" onclick="removesize('+count+')"><i class="fa fa-trash"></i></button><button class="btn btn-info" type="button" onclick="addsize('+count+')"><i class="fa fa-plus"></i></button></div></div></div>');
+      $("#customsize").append('<div class="row" id="size-'+count+'" ><div class="col-3"><div class="form-group"><label>size name</label><input required="" type="text" class="form-control" name="size_name[]" ></div></div><div class="col-3"><div class="form-group"><label>size Quantity</label><input required="" type="number" class="form-control" name="size_quantity[]" ></div></div><div class="col-3"><div class="form-group"><label>size Price</label><input required="" type="number" class="form-control" name="size_price[]" ></div></div><div class="col-3"><div class="form-group"><button class="btn btn-danger" type="button" onclick="removesize('+count+')"><i class="fa fa-trash"></i></button><button class="btn btn-info" type="button" onclick="addsize('+count+')"><i class="fa fa-plus"></i></button></div></div></div>');
    }
-   function removesize(val){
+   function removesize(val)
+   {
          $("#size-"+val).remove();
    }
    
-   // color
-   function showcolor(){
+   function showcolor()
+   {
       if($('#color').is(':checked'))
       {
          $("#customcolor").append('<div class="row" id="color-'+count+'" ><div class="col-3"><div class="form-group"><label>color name</label><input required="" type="text" class="form-control" name="color_name[]" ></div></div><div class="col-3"><div class="form-group"><label>color Quantity</label><input required="" type="number" class="form-control" name="color_quantity[]" ></div></div><div class="col-3"><div class="form-group"><label>color Price</label><input required="" type="number" class="form-control" name="color_price[]" ></div></div><div class="col-3"><div class="form-group"><button class="btn btn-info" type="button" onclick="addcolor('+count+')"><i class="fa fa-plus"></i></button></div></div></div>');
@@ -181,7 +192,8 @@
          $("#customcolor").empty();
       }
    }
-   function addcolor(val){
+   function addcolor(val)
+   {
       count++;
          $("#customcolor").append('<div class="row" id="color-'+count+'" ><div class="col-3"><div class="form-group"><label>color name</label><input required="" type="text" class="form-control" name="color_name[]" ></div></div><div class="col-3"><div class="form-group"><label>color Quantity</label><input required="" type="number" class="form-control" name="color_quantity[]" ></div></div><div class="col-3"><div class="form-group"><label>color Price</label><input required="" type="number" class="form-control" name="color_price[]" ></div></div><div class="col-3"><div class="form-group"><button class="btn btn-danger" type="button" onclick="removecolor('+count+')"><i class="fa fa-trash"></i></button><button class="btn btn-info" type="button" onclick="addcolor('+count+')"><i class="fa fa-plus"></i></button></div></div></div>');
    }
@@ -200,7 +212,7 @@
                success: function (data) {
                   $('select[name="subcat_id"]').empty();
                   $.each(data.success, function (key, value) {
-                     $('select[name="subcat_id"]').append('<option value=" ' + key + '">' + value.category_name + '</option>');
+                     $('select[name="subcat_id"]').append('<option value="'+ value.id +'">' + value.category_name + '</option>');
                   })
                }
 

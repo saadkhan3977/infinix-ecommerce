@@ -13,24 +13,13 @@ use Session;
 
 class DashboardController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware(['auth','verified']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        // return Auth::user();
         $data['users'] = User::all()->count();
         $data['orders'] = Order::all()->count();
         $data['products'] = Product::all()->count();
@@ -50,14 +39,12 @@ class DashboardController extends Controller
             'phone' => 'required',
         ]);
     
-        $input = $request->all();
-    
+        $input = $request->all();    
         $user = User::find($id);
         $user->update($input);
 
         session::flash('success','Record Updated Successfully');
         return redirect()->back();
-
     }
 
     public function change_password()

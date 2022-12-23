@@ -44,11 +44,11 @@
 
                             @foreach($product->images as $gi)
                             <div class="col-sm-2 border-bottom mb-2">
-                                <a href="{{ asset('assets/images/product/gallery/'.$gi->product_image) }}" data-toggle="lightbox" data-title="{{$product->product_name}}" data-gallery="gallery">
-                                        <img src="{{ asset('assets/images/product/gallery/'.$gi->product_image) }}" class="img-fluid mb-2" alt="{{$product->product_name}}">
+                                <a href="{{ asset('/uploads/product/gallery/'.$gi->product_image) }}" data-toggle="lightbox" data-title="{{$product->product_name}}" data-gallery="gallery">
+                                        <img src="{{ asset('/uploads/product/gallery/'.$gi->product_image) }}" class="img-fluid mb-2" alt="{{$product->product_name}}">
                                 </a>
 
-                                <button type="submit" class="btn btn-danger btn-sm btn-block" onclick="window.location='{{url("admin/product/image/".$gi->id."/delete")}}'">
+                                <button type="submit" class="btn btn-danger btn-sm btn-block" onclick="window.location='{{url("/product/image/".$gi->id."/delete")}}'">
                                         Delete
                                 </button>
                                 <!-- <a href="{{-- URL::route('admin.product.image.delete',$primg->id) --}}" class="btn btn-outline-link btn-lg btn-block">Delete</a> -->

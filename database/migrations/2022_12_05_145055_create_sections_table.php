@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
             $table->integer('page_id')->nullable();
+            $table->integer('template_id')->nullable();
             $table->string('section_name')->nullable();
             $table->longText('slider_content_1')->nullable();
             $table->longText('slider_content_2')->nullable();
